@@ -73,11 +73,19 @@ class App extends Component {
 
   selectCard() {
     this.fetchCards();
-
+    
+    // Pick a random card
     const min = 0;
     const max = this.state.cards.length - 1;
     const rand = Math.floor(min + (Math.random() * (max-min)));
-    this.setState({ selected_card_number: rand });
+    
+    this.setState({ 
+      selected_card_number: rand,
+      selected_card_price: this.state.cards[rand].prices.usd,
+      selected_card_name: this.state.cards[rand].name,
+      selected_card_image_uri: this.state.cards[rand].image_uris.normal,
+      selected_card_purchase_uri: this.state.cards[rand].purchase_uris.tcgplayer
+    });
     
   }
 
