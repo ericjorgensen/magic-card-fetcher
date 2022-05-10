@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/magic-card-fetcher/static/css/main.2b8b17ac.css",
+    "main.js": "/magic-card-fetcher/static/js/main.b14620c0.js",
+    "static/js/787.efb8a153.chunk.js": "/magic-card-fetcher/static/js/787.efb8a153.chunk.js",
+    "static/media/wheelmaster.png": "/magic-card-fetcher/static/media/wheelmaster.8354779223ff0c3b77fa.png",
+    "index.html": "/magic-card-fetcher/index.html",
+    "main.2b8b17ac.css.map": "/magic-card-fetcher/static/css/main.2b8b17ac.css.map",
+    "main.b14620c0.js.map": "/magic-card-fetcher/static/js/main.b14620c0.js.map",
+    "787.efb8a153.chunk.js.map": "/magic-card-fetcher/static/js/787.efb8a153.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b8b17ac.css",
+    "static/js/main.b14620c0.js"
+  ]
+}
