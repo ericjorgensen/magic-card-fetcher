@@ -36,7 +36,7 @@ class App extends Component {
       // Have we done a fetch yet this session?
       if ( !this.state.has_fetched ) {
       
-        fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79')
+        fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79%20f%3Acommander')
             .then(response => response.json())
             .then(data => this.setState({
                 has_fetched: true,
