@@ -27,7 +27,7 @@ class App extends Component {
       const rand = Math.floor(min + (Math.random() * (max-min)));
       this.setState({ card_number: rand });
       
-      fetch('https://api.scryfall.com/cards/search?q=is%20usd%3C%3D0.79')
+      fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79')
           .then(response => response.json())
           .then(data => this.setState({ 
               name: data.data[rand].name,
