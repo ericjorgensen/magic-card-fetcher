@@ -11,31 +11,74 @@ class App extends Component {
     
     // This binding is necessary to make `this` work in the callback
     this.fetchCards = this.fetchCards.bind(this);
+    this.selectCard = this.selectCard.bind(this);
     
+    // Tracking state
     this.state = {
-      name: 'Test',
-      image_uri: 'Test',
-      card_number: 0,
-      price: 0,
-      purchase_uri: ''
+      has_fetched: false,
+      has_more: true,
+      total_cards: 0,
+      next_page_uri: '',
+      cards: [],
+      selected_card_name: 'Test',
+      selected_card_image_uri: 'Test',
+      selected_card_number: 0,
+      selected_card_price: 0,
+      selected_card_purchase_uri: ''
     };
   }
 
   async fetchCards() {
-      const min = 0;
-      const max = 174;
-      const rand = Math.floor(min + (Math.random() * (max-min)));
-      this.setState({ card_number: rand });
+    
+    // Max results returned by the API
+    const maxResults = 175;
+
+      // Have we done a fetch yet this session?
+      if ( !this.state.has_fetched ) {
       
-      fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79')
-          .then(response => response.json())
-          .then(data => this.setState({ 
-              name: data.data[rand].name,
-              image_uri: data.data[rand].image_uris.normal,
-              price: data.data[rand].prices.usd,
-              purchase_uri: data.data[rand].purchase_uris.tcgplayer
-            }
-          ));
+        fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79')
+            .then(response => response.json())
+            .then(data => this.setState({
+                has_fetched: true,
+                total_cards: data.total_cards,
+                next_page_uri: data.next_page,
+                has_more: data.has_more,
+                cards: data.data
+              }
+        ))
+      }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    
+    // Fetch all results only until there are no more to get
+    if ( prevState.has_more === true && this.state.has_more === true ) {
+        fetch(this.state.next_page_uri)
+        .then(response => response.json())
+        .then(data => this.setState(prevState => ({
+            next_page_uri: data.next_page,
+            has_more: data.has_more,
+            cards: [].concat(prevState.cards, data.data)
+        })))
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+
+    if ( prevState.selected_card_number !== this.state.selected_card_number && this.state.has_more === false ) {
+      console.log("New card number ready. It's: " + this.state.selected_card_number);
+    }
+
+  }
+
+  selectCard() {
+    this.fetchCards();
+
+    const min = 0;
+    const max = this.state.cards.length - 1;
+    const rand = Math.floor(min + (Math.random() * (max-min)));
+    this.setState({ selected_card_number: rand });
+    
   }
 
   render() {  
@@ -44,7 +87,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <button onClick={this.fetchCards}>Give me a card!</button>
+        <button onClick={this.selectCard}>Give me a card!</button>
         <Card cardObject={this.state}/>
       </div>
     );
