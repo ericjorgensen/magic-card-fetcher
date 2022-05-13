@@ -24,8 +24,21 @@ class App extends Component {
       selected_card_image_uri: 'Test',
       selected_card_number: 0,
       selected_card_price: 0,
-      selected_card_purchase_uri: ''
+      selected_card_purchase_uri: '',
+      is_loading: false
     };
+  }
+
+  isLoading = () => {
+    this.setState({
+      is_loading: true
+    });
+  }
+
+  isNotLoading = () => {
+    this.setState({
+      is_loading: false
+    })
   }
 
   async fetchCards() {
@@ -72,6 +85,8 @@ class App extends Component {
   }
 
   selectCard() {
+    this.isLoading();
+
     this.fetchCards();
     
     // Pick a random card
@@ -87,15 +102,17 @@ class App extends Component {
       selected_card_purchase_uri: this.state.cards[rand].purchase_uris.tcgplayer
     });
     
+    this.isNotLoading();
   }
 
   render() {  
     return (
       <div className="App">
+        {this.state.is_loading}
+          <div className="App-loading"></div>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <button onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
         </header>
-        <button onClick={this.selectCard}>Give me a card!</button>
         <Card cardObject={this.state}/>
       </div>
     );

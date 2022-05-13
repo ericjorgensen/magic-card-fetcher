@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 5vh;
 }
 
 .App-logo {
@@ -8,9 +9,13 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    
+  .App-logo:active, .App-logo:hover {
+    animation: App-logo-spin infinite 20s linear;
   }
+}
+
+button:active {
+  animation: App-logo-spin infinite 20s linear;
 }
 
 .App-header {
