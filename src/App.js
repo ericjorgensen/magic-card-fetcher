@@ -108,12 +108,15 @@ class App extends Component {
   render() {  
     return (
       <div className="App">
-        {this.state.is_loading}
+        {this.state.is_loading &&
           <div className="App-loading"></div>
+        }
         <header className="App-header">
           <button onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
         </header>
-        <Card cardObject={this.state}/>
+        {this.state.has_fetched &&
+          <Card cardObject={this.state}/>
+        }
       </div>
     );
   }

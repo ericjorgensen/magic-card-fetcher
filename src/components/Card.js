@@ -7,7 +7,7 @@ class Card extends Component {
 
     render() {
         return (
-            <div>
+            <div className="Card">
                 <img src={this.props.cardObject.selected_card_image_uri} className="Card-image" alt="image" />
                 <h3>Price: ${this.props.cardObject.selected_card_price}</h3>
                 <a href={this.props.cardObject.selected_card_purchase_uri} target="blank">Buy Card</a>
