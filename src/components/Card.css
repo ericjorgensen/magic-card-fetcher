@@ -1,12 +1,22 @@
+.Card {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .Card-container {
     display: flex;
-    min-height: 680px;
-    min-width: 488px;
     max-width: 100%;
-    height: auto;
+    width: 75%;
+    height: 400px;
     border: dashed 5px lightgray;
     justify-content: center;
     align-items: center;
+}
+
+.Card-container img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .Card-container::after {
@@ -16,10 +26,29 @@
     font-size: 20vh;
 }
 
+.Card-has-fetched {
+    display: block;
+}
+
 .Card-has-fetched .Card-container {
     border: none;
+    max-width: 75%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .Card-has-fetched .Card-container::after {
     display: none;
+}
+
+@media only screen and (min-width: 767px) {
+    .Card-container {
+        display: flex;
+        min-height: 680px;
+        min-width: 488px;
+    }
+
+    .Card-container img {
+        width: auto;
+    }
 }
