@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/magic-card-fetcher/static/css/main.04053cce.css",
-    "main.js": "/magic-card-fetcher/static/js/main.1c45c30e.js",
+    "main.css": "/magic-card-fetcher/static/css/main.ee4502eb.css",
+    "main.js": "/magic-card-fetcher/static/js/main.5673aa10.js",
     "static/js/787.efb8a153.chunk.js": "/magic-card-fetcher/static/js/787.efb8a153.chunk.js",
     "static/media/wheelmaster.png": "/magic-card-fetcher/static/media/wheelmaster.8354779223ff0c3b77fa.png",
     "index.html": "/magic-card-fetcher/index.html",
-    "main.04053cce.css.map": "/magic-card-fetcher/static/css/main.04053cce.css.map",
-    "main.1c45c30e.js.map": "/magic-card-fetcher/static/js/main.1c45c30e.js.map",
+    "main.ee4502eb.css.map": "/magic-card-fetcher/static/css/main.ee4502eb.css.map",
+    "main.5673aa10.js.map": "/magic-card-fetcher/static/js/main.5673aa10.js.map",
     "787.efb8a153.chunk.js.map": "/magic-card-fetcher/static/js/787.efb8a153.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.04053cce.css",
-    "static/js/main.1c45c30e.js"
+    "static/css/main.ee4502eb.css",
+    "static/js/main.5673aa10.js"
   ]
 }
