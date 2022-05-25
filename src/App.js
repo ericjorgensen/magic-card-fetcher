@@ -43,52 +43,78 @@ class App extends Component {
 
   async fetchCards() {
     
-    // Max results returned by the API
-    const maxResults = 175;
+    this.isLoading();
+    
+    // Initial fetch URL
+    var fetchAddress = 'https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79%20f%3Acommander';
+    
+    // We have more to fetch until we don't
+    var hasMore = true;
 
-      // Have we done a fetch yet this session?
-      if ( !this.state.has_fetched ) {
-      
-        fetch('https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79%20f%3Acommander')
-            .then(response => response.json())
-            .then(data => this.setState({
-                has_fetched: true,
-                total_cards: data.total_cards,
-                next_page_uri: data.next_page,
-                has_more: data.has_more,
-                cards: data.data
-              }
-        ))
+    // Empty array to hold our card results as we fetch
+    var cards = [];
+
+    var fetchNow = () => {
+
+      if ( hasMore === true ) {
+          fetch(fetchAddress)
+          .then(response => response.json())
+          .then(data => {
+            hasMore = data.has_more
+            fetchAddress = data.next_page
+            cards = [].concat(cards, data.data)
+          })
+          .then(
+            () => {
+              fetchNow();
+            }
+          );
+      } else {
+        this.setState({
+          has_fetched: true,
+          cards: cards
+        },
+        this.selectCardFromState
+        );
+        
+        this.isNotLoading();
+
       }
+    }
+
+    fetchNow();
   }
 
   componentDidUpdate(prevProps, prevState) {
     
     // Fetch all results only until there are no more to get
-    if ( prevState.has_more === true && this.state.has_more === true ) {
-        fetch(this.state.next_page_uri)
-        .then(response => response.json())
-        .then(data => this.setState(prevState => ({
-            next_page_uri: data.next_page,
-            has_more: data.has_more,
-            cards: [].concat(prevState.cards, data.data)
-        })))
-        .catch((e) => {
-          console.log(e);
-        });
-    }
-
-    if ( prevState.selected_card_number !== this.state.selected_card_number && this.state.has_more === false ) {
-      console.log("New card number ready. It's: " + this.state.selected_card_number);
-    }
+    // if ( prevState.has_more === true && this.state.has_more === true ) {
+    //     fetch(this.state.next_page_uri)
+    //     .then(response => response.json())
+    //     .then(data => this.setState(prevState => ({
+    //         next_page_uri: data.next_page,
+    //         has_more: data.has_more,
+    //         cards: [].concat(prevState.cards, data.data),
+    //         has_fetched: true
+    //     })))
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // }
 
   }
 
   selectCard() {
-    this.isLoading();
 
-    this.fetchCards();
-    
+    // Have we done a fetch yet this session?
+    if ( !this.state.has_fetched ) {
+      this.fetchCards();
+    } else {
+      this.selectCardFromState();
+    }
+  }
+
+  selectCardFromState() {
     // Pick a random card
     const min = 0;
     const max = this.state.cards.length - 1;
@@ -101,8 +127,6 @@ class App extends Component {
       selected_card_image_uri: this.state.cards[rand].image_uris.normal,
       selected_card_purchase_uri: this.state.cards[rand].purchase_uris.tcgplayer
     });
-    
-    this.isNotLoading();
   }
 
   render() {  
@@ -111,12 +135,8 @@ class App extends Component {
         {this.state.is_loading &&
           <div className="App-loading"></div>
         }
-        <header className="App-header">
-          <button onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
-        </header>
-        {this.state.has_fetched &&
-          <Card cardObject={this.state}/>
-        }
+        <Card cardObject={this.state}/>
+        <button className="App-spin-button" onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
       </div>
     );
   }

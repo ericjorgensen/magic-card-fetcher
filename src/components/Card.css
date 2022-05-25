@@ -1,0 +1,25 @@
+.Card-container {
+    display: flex;
+    min-height: 680px;
+    min-width: 488px;
+    max-width: 100%;
+    height: auto;
+    border: dashed 5px lightgray;
+    justify-content: center;
+    align-items: center;
+}
+
+.Card-container::after {
+    content: "?";
+    color: lightgray;
+    font-weight: bold;;
+    font-size: 20vh;
+}
+
+.Card-has-fetched .Card-container {
+    border: none;
+}
+
+.Card-has-fetched .Card-container::after {
+    display: none;
+}
