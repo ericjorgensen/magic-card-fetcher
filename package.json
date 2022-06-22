@@ -1,7 +1,7 @@
 {
   "name": "magic-card-fetcher",
   "version": "0.1.0",
-  "homepage": "https://ericjorgensen.github.io/magic-card-fetcher",
+  "homepage": "https://www.questforthejanklord.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
