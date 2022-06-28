@@ -8,6 +8,11 @@
   font-size: calc(10px + 2vmin);
 }
 
+.App-logotype {
+  max-width: 75%;
+  margin-bottom: 5vh;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;

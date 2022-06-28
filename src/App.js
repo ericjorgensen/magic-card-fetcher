@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import logo from './wheelmaster.png';
+import logotype from './logotype.png';
 import Card from './components/Card';
 
 
@@ -132,6 +133,7 @@ class App extends Component {
   render() {  
     return (
       <div className="App">
+        <img src={logotype} alt="Quest for the Janklord Logo" className="App-logotype" />
         {this.state.is_loading &&
           <div className="App-loading"></div>
         }
