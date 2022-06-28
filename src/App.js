@@ -46,7 +46,7 @@ class App extends Component {
     this.isLoading();
     
     // Initial fetch URL
-    var fetchAddress = 'https://api.scryfall.com/cards/search?q=is%3Acommander%20usd%3C%3D0.79%20f%3Acommander';
+    var fetchAddress = 'https://api.scryfall.com/cards/search?q=-type%3Abackground+legal%3Acommander+is%3Acommander+usd<.79';
     
     // We have more to fetch until we don't
     var hasMore = true;
