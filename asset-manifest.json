@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.4e6a16de.css",
-    "main.js": "/static/js/main.0f5bb4bd.js",
+    "main.js": "/static/js/main.f815a2ca.js",
     "static/js/787.efb8a153.chunk.js": "/static/js/787.efb8a153.chunk.js",
     "static/media/wheelmaster.png": "/static/media/wheelmaster.8354779223ff0c3b77fa.png",
     "index.html": "/index.html",
     "main.4e6a16de.css.map": "/static/css/main.4e6a16de.css.map",
-    "main.0f5bb4bd.js.map": "/static/js/main.0f5bb4bd.js.map",
+    "main.f815a2ca.js.map": "/static/js/main.f815a2ca.js.map",
     "787.efb8a153.chunk.js.map": "/static/js/787.efb8a153.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e6a16de.css",
-    "static/js/main.0f5bb4bd.js"
+    "static/js/main.f815a2ca.js"
   ]
 }
