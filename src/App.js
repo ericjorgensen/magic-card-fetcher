@@ -3,6 +3,7 @@ import './App.css';
 import logo from './wheelmaster.png';
 import logotype from './logotype.png';
 import Card from './components/Card';
+import IntroText from './components/IntroText';
 
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
       selected_card_number: 0,
       selected_card_price: 0,
       selected_card_purchase_uri: '',
-      is_loading: false
+      is_loading: false,
     };
   }
 
@@ -41,11 +42,6 @@ class App extends Component {
       is_loading: false
     })
   }
-
-  introText = [
-    '"Of course it offers you power. Demons always do. But trust me—the jankier the prize, the more ruinous the price. And that price is seventy-nine cents.”<br> — Professor Onyx to you, as you behold the Wheel of Fate',
-    'In the marsh’s clearing, you behold an ancient wheel. A voice within the fog beckons you to spin it, "Won’t you bear the mantle of a Janklord? Come now--don’t be afraid; this demon’s price is only seventy-nine cents…"'
-  ]
 
   async fetchCards() {
     
@@ -123,13 +119,7 @@ class App extends Component {
         {this.state.is_loading &&
           <div className="App-loading"></div>
         }
-        <div className="App-text-container">
-          <p className="App-text-container-item">“Of course it offers you power. Demons always do. But trust me — the jankier the prize, the more ruinous the price. And that price is seventy-nine cents.”
-<br></br>— Professor Onyx to you, as you behold the Wheel of Fate</p>
-          <div className="App-text-container-item">
-            <button className="App-spin-button" onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
-          </div>  
-        </div>
+        <IntroText data={this.state} logo={logo}/>
         <Card cardObject={this.state}/>
       </div>
     );
