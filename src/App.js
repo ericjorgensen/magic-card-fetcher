@@ -42,6 +42,11 @@ class App extends Component {
     })
   }
 
+  introText = [
+    '"Of course it offers you power. Demons always do. But trust me—the jankier the prize, the more ruinous the price. And that price is seventy-nine cents.”<br> — Professor Onyx to you, as you behold the Wheel of Fate',
+    'In the marsh’s clearing, you behold an ancient wheel. A voice within the fog beckons you to spin it, "Won’t you bear the mantle of a Janklord? Come now--don’t be afraid; this demon’s price is only seventy-nine cents…"'
+  ]
+
   async fetchCards() {
     
     this.isLoading();
@@ -86,25 +91,6 @@ class App extends Component {
     fetchNow();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    
-    // Fetch all results only until there are no more to get
-    // if ( prevState.has_more === true && this.state.has_more === true ) {
-    //     fetch(this.state.next_page_uri)
-    //     .then(response => response.json())
-    //     .then(data => this.setState(prevState => ({
-    //         next_page_uri: data.next_page,
-    //         has_more: data.has_more,
-    //         cards: [].concat(prevState.cards, data.data),
-    //         has_fetched: true
-    //     })))
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // }
-
-  }
-
   selectCard() {
 
     // Have we done a fetch yet this session?
@@ -137,8 +123,14 @@ class App extends Component {
         {this.state.is_loading &&
           <div className="App-loading"></div>
         }
+        <div className="App-text-container">
+          <p className="App-text-container-item">“Of course it offers you power. Demons always do. But trust me — the jankier the prize, the more ruinous the price. And that price is seventy-nine cents.”
+<br></br>— Professor Onyx to you, as you behold the Wheel of Fate</p>
+          <div className="App-text-container-item">
+            <button className="App-spin-button" onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
+          </div>  
+        </div>
         <Card cardObject={this.state}/>
-        <button className="App-spin-button" onClick={this.selectCard}><img src={logo} className="App-logo" alt="logo" /></button>
       </div>
     );
   }

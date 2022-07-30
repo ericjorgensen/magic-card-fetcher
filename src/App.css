@@ -10,7 +10,6 @@
 
 .App-logotype {
   max-width: 75%;
-  margin-bottom: 5vh;
 }
 
 .App-logo {
@@ -45,6 +44,18 @@ button:active {
   opacity: .8;
 }
 
+.App-text-container {
+  display: flex;
+  align-items: center;
+}
+
+.App-text-container-item {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  flex-shrink:1;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -53,4 +64,8 @@ button:active {
   to {
     transform: rotate(360deg);
   }
+}
+
+p {
+  font-family: 'Square Peg', cursive;
 }
