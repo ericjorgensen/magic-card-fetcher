@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HTMLReactParser from 'html-react-parser';
 
 class IntroText extends Component {
     constructor(props){
@@ -29,7 +30,7 @@ class IntroText extends Component {
         return (
             <div className="App-text-container">
                 <p className="App-text-container-item">
-                    {this.state.selected_intro_text}
+                    {HTMLReactParser(this.state.selected_intro_text)}
                 </p>
                 <div className="App-text-container-item">
                     <button className="App-spin-button" onClick={this.props.selectCard}><img src={this.props.logo} className="App-logo" alt="logo" /></button>
