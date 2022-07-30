@@ -47,6 +47,7 @@ button:active {
 }
 
 p {
+  font-size: calc(14px + 2vmin);
   margin: 1em 0 0 0;
 }
 

@@ -119,7 +119,7 @@ class App extends Component {
         {this.state.is_loading &&
           <div className="App-loading"></div>
         }
-        <IntroText data={this.state} logo={logo}/>
+        <IntroText data={this.state} logo={logo} selectCard={this.selectCard}/>
         <Card cardObject={this.state}/>
       </div>
     );

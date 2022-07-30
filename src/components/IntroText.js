@@ -32,7 +32,7 @@ class IntroText extends Component {
                     {this.state.selected_intro_text}
                 </p>
                 <div className="App-text-container-item">
-                    <button className="App-spin-button" onClick={this.props.data.selectCard}><img src={this.props.logo} className="App-logo" alt="logo" /></button>
+                    <button className="App-spin-button" onClick={this.props.selectCard}><img src={this.props.logo} className="App-logo" alt="logo" /></button>
                 </div>  
             </div>
         )
