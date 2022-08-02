@@ -6,3 +6,5 @@ This is a simple React app that uses the Scryfall API (thanks, Scryfall!) to dis
 2. The card is available for purchase for less than 75 cents.
 
 That's it.
+
+This is a test.
