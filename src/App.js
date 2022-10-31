@@ -27,6 +27,7 @@ class App extends Component {
       selected_card_number: 0,
       selected_card_price: 0,
       selected_card_purchase_uri: '',
+      selected_card_is_partner: false,
       is_loading: false,
     };
   }
@@ -108,7 +109,8 @@ class App extends Component {
       selected_card_price: this.state.cards[rand].prices.usd,
       selected_card_name: this.state.cards[rand].name,
       selected_card_image_uri: this.state.cards[rand].image_uris.normal,
-      selected_card_purchase_uri: this.state.cards[rand].purchase_uris.tcgplayer
+      selected_card_purchase_uri: this.state.cards[rand].purchase_uris.tcgplayer,
+      selected_card_is_partner: this.state.cards[rand].oracle_text.includes('partner')
     });
   }
 
@@ -121,6 +123,9 @@ class App extends Component {
         }
         <IntroText data={this.state} logo={logo} selectCard={this.selectCard}/>
         <Card cardObject={this.state}/>
+        {this.state.selected_card_is_partner &&
+          <div>Partner!</div>
+        }
       </div>
     );
   }

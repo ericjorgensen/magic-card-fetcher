@@ -17,6 +17,7 @@
 .Card-container img {
     max-width: 100%;
     max-height: 100%;
+    animation: fadeIn 2s;
 }
 
 .Card-container::after {
@@ -51,4 +52,9 @@
     .Card-container img {
         width: auto;
     }
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
